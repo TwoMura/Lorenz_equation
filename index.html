@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorenz_equation_simulator</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+  </style>
+</head>
+
+<body>
+  <label>x_0: <input type="number" id="x_0" size="40" value="1.0"></label><br>
+  <label>y_0: <input type="number" id="y_0" size="40" value="1.0"></label><br>
+  <label>z_0: <input type="number" id="z_0" size="40" value="1.0"></label><br>
+  <label>sigma: <input type="number" id="sigma" size="40" value="10.0"></label><br>
+  <label>rho: <input type="number" id="rho" size="40" value="28.0"></label><br>
+  <label>beta: <input type="number" id="beta" size="40" value="2.666667"></label><br>
+  <label>frame/step: <input type="number" id="f_p_s" size="40" value="1000"></label><br>
+  <label>line width: <input type="number" id="line_width" size="40" value="1.0"></label><br>
+  <button id="reload_button" size="40">reload</button><br>
+  <button id="pause_button" size="40">pause</button><br>
+  <div id="myPlot" style="width: 100%; height: 100vh;"></div>
+</body>
+
+<script src="main.js"></script>
+
+</html>
