@@ -1,9 +1,9 @@
-let trajectoryData = { x: [], y: [], z: [] }; 
+let trajectoryData = {x: [], y: [], z: []};
 let isPaused = false;
 
 let current_camera = {
-  eye: { x: 0.7, y: -0.5, z: 0.3 },
-  up: { x: -0.3, y: 0.2, z: 1.0 }
+  eye: {x: 0.7, y: -0.5, z: 0.3},
+  up: {x: -0.3, y: 0.2, z: 1.0}
 };
 
 delta_t = 0.001;
@@ -33,9 +33,8 @@ function updateParameters() {
   line_width = Number(document.getElementById('line_width').value);
   frame_per_point = Math.floor(frame_per_step / point_per_step);
 
-  trajectoryData = { x: [], y: [], z: [] };
+  trajectoryData = {x: [], y: [], z: []};
 }
-
 
 
 
@@ -65,7 +64,7 @@ function updateTrajectory() {
       x: trajectoryData.x,
       y: trajectoryData.y,
       z: trajectoryData.z,
-      mode: 'lines', 
+      mode: 'lines',
       type: 'scatter3d',
       line: {
         width: line_width,
@@ -91,29 +90,39 @@ function updateTrajectory() {
     const layout = {
       scene: {
         camera: current_camera,
-        aspectmode: 'manual', 
-        aspectratio: {
-          x: 1, 
-          y: 1, 
-          z: 1 
+        aspectmode: 'manual',
+        aspectratio: {x: 1, y: 1, z: 1},
+        xaxis: {
+          title: 'X',
+          range: [-plot_area_scale, plot_area_scale],
+          tick0: 0,
+          dtick: 50
         },
-        xaxis: { title: 'X', range: [-plot_area_scale, plot_area_scale], tick0: 0, dtick: 50 },
-        yaxis: { title: 'Y', range: [-plot_area_scale, plot_area_scale], tick0: 0, dtick: 50 },
-        zaxis: { title: 'Z', range: [-plot_area_scale, plot_area_scale], tick0: 0, dtick: 50 },
+        yaxis: {
+          title: 'Y',
+          range: [-plot_area_scale, plot_area_scale],
+          tick0: 0,
+          dtick: 50
+        },
+        zaxis: {
+          title: 'Z',
+          range: [-plot_area_scale, plot_area_scale],
+          tick0: 0,
+          dtick: 50
+        },
       },
       title: 'Lorenz equation curve',
     };
 
     Plotly.newPlot('myPlot', [trajectoryTrace, currentPositionTrace], layout);
-
   }
 
-  requestAnimationFrame(updateTrajectory); 
+  requestAnimationFrame(updateTrajectory);
 }
 
-document.getElementById('pause_button').onclick = function () {
-  isPaused = !isPaused; 
-  this.textContent = isPaused ? 'restart' : 'pause';
+document.getElementById('pause_button').onclick = function() {
+  isPaused = !isPaused;
+  this.textContent = isPaused ? 'resume' : 'pause';
   if (!isPaused) {
     const plotElement = document.getElementById('myPlot');
     current_camera = plotElement._fullLayout.scene.camera;
