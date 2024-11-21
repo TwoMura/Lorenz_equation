@@ -86,7 +86,7 @@ function updateTrajectory() {
       name: 'current position'
     };
 
-    const plot_area_scale = 300;
+    const plot_area_scale = 200;
     const layout = {
       scene: {
         camera: current_camera,
